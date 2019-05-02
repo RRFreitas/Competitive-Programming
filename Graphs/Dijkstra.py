@@ -4,7 +4,7 @@
 
 from heapq import *
 
-def dijkstra(node, fim):
+def dijkstra(node):
     q = []
     
     dist[node] = 0
@@ -20,7 +20,7 @@ def dijkstra(node, fim):
 
 
 v, a = map(int, input().split())
-ini, fim = map(int, input().split())
+ini = int(input().split())
 
 adj = [[] for i in range(v)]
 dist = [float("inf")] * v
@@ -31,5 +31,5 @@ for i in range(a):
     adj[a].append((p, b))
     adj[b].append((p, a))
 
-m = dijkstra(ini, fim)
+m = dijkstra(ini)
 print(dist)
