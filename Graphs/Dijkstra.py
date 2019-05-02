@@ -20,7 +20,7 @@ def dijkstra(node):
 
 
 v, a = map(int, input().split())
-ini = int(input().split())
+ini = int(input())
 
 adj = [[] for i in range(v)]
 dist = [float("inf")] * v
