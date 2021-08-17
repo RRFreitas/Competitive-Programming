@@ -2,10 +2,10 @@
 
 #define ll long long
 
+using namespace std;
+
 #define LEFT(x) (x<<1)
 #define RIGHT(x) (x<<1|1)
-
-using namespace std;
 
 struct Node {
     // attributes
