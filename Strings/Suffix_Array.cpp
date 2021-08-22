@@ -9,43 +9,42 @@
 
 using namespace std;
 
-vector<int> SA(string s) {
-    s += '$';
-    int n = s.size();
-    int tam = max(n, 256);
-    vector<int> p(n), c(tam), cn(tam), cnt(tam, 0), pn(n);
-    for(int i = 0; i < n; i++) cnt[s[i]]++;
-    for(int i = 1; i < tam; i++) cnt[i] += cnt[i-1];
-    for(int i = n-1; i >= 0; i--) p[--cnt[s[i]]] = i;
-    c[p[0]] = 0;
-    int classe = 0;
-    for(int i = 1; i < n; i++) {
-        if(s[p[i]] != s[p[i-1]])
-            classe++;
-        c[p[i]] = classe;
-    }
+vector<int> SA(string &s){
+    int n = s.size(), alf = max(256, n+2);
+    vector<int> ans, rnk(n), temp_rnk(n), aux[alf];
 
-    for(int k = 1; k < n; k <<= 1) {
-        for(int i = 0; i < n; i++) {
-            pn[i] = p[i] - k;
-            if(pn[i] < 0) pn[i] += n;
-        }
-        fill(cnt.begin(), cnt.end(), 0);
-        for(int i = 0; i < n; i++) cnt[c[pn[i]]]++;
-        for(int i = 1; i < tam; i++) cnt[i] += cnt[i-1];
-        for(int i = n-1; i >= 0; i--) p[--cnt[c[pn[i]]]] = pn[i];
+    for (int i=0; i<n; i++) rnk[i] = s[i];
 
-        cn[p[0]] = 0;
-        classe = 0;
-        for(int i = 1; i < n; i++) {
-            pi atual = MP(c[p[i]], c[(p[i]+k) % n]);
-            pi ant = MP(c[p[i-1]], c[(p[i-1]+k) % n]);
-            if(atual != ant) classe++;
-            cn[p[i]] = classe;
+    function<int (int)> gr = [&](int i){ return (i < n ? rnk[i] : -1); }; //get rank
+
+    for (int d=1; d<=n; d <<= 1){
+
+        ans.clear();
+        for (int i=0; i<n; i++) aux[gr(i+d)+1].push_back(i);
+        for (int i=0; i<alf; i++){
+            for (int j=0; j<aux[i].size(); j++){
+                ans.push_back(aux[i][j]);
+            }
+            aux[i].clear();
         }
-        c.swap(cn);
+        for (int i=0; i<n; i++) aux[gr(ans[i])].push_back(ans[i]);
+        ans.clear();
+        for (int i=0; i<alf; i++){
+            for (int j=0; j<aux[i].size(); j++){
+                ans.push_back(aux[i][j]);
+            }
+            aux[i].clear();
+        }
+
+        temp_rnk[ans[0]] = 0;
+        for (int i=1; i<n; i++){
+            temp_rnk[ans[i]] = temp_rnk[ans[i-1]] + (make_pair(gr(ans[i]), gr(ans[i]+d)) != make_pair(gr(ans[i-1]), gr(ans[i-1]+d)));
+        }
+        rnk = temp_rnk;
+        if (rnk[ans[n-1]] == n-1) break;
     }
-    return p;
+    
+    return ans;
 }
 
 vector<int> kasai(vector<int> sa, string s){
@@ -72,7 +71,4 @@ int main() {
     cin >> s;
     vector<int> suf = SA(s);
     for(int i = 1; i < suf.size(); i++) cout << suf[i] << "\n";
-    cout << "\n";
-    vector<int> lcp = kasai(suf, s);
-    for(int x : lcp) cout << x << "\n";
 }
