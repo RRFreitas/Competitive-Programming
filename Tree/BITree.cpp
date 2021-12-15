@@ -4,7 +4,7 @@ struct BIT{
     vector<ll> tree;
     vector<ll> base;
 
-    BIT(vector<ll> &base) : base(base) {
+    BIT(vector<ll> &base) {
         size = base.size();
         tree.resize(size+1);
         for(int i = 1; i <= size; i++)
