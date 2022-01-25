@@ -18,6 +18,7 @@ struct DSU {
     }
 
     void join(int a, int b) {
+        if(pa == pb) return;
         int pa = find(a);
         int pb = find(b);
 
