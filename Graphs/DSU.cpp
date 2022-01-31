@@ -18,9 +18,9 @@ struct DSU {
     }
 
     void join(int a, int b) {
-        if(pa == pb) return;
         int pa = find(a);
         int pb = find(b);
+        if(pa == pb) return;
 
         if(pa == pb) return;
         if(rankk[pa] >= rankk[pb]) {
