@@ -1,4 +1,7 @@
-make a A gen || exit 1
+#make a A gen || exit 1
+comp_flags a || exit 1
+comp_flags A || exit 1
+comp_flags gen || exit 1
 for ((i = 1; ; i++)) do
 	./gen $i > in
 	./a < in > out
