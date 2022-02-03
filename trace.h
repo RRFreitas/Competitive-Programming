@@ -33,6 +33,19 @@ ostream& operator<<(ostream& os, const vector<T>& v)
     return os; 
 }
 
+template <class T, size_t N>
+ostream& operator<<(ostream& os, const array<T, N>& v) 
+{ 
+    os << "["; 
+    for (int i = 0; i < (int) N; i++) { 
+        os << v[i]; 
+        if (i != (int)N - 1) 
+            os << ", "; 
+    } 
+    os << "]"; 
+    return os; 
+}
+
 template <typename T> 
 ostream& operator<<(ostream& os, const set<T>& v) 
 { 
