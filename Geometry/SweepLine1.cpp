@@ -1,7 +1,3 @@
-/*
- * Author: Rennan Rocha
-*/
-
 #include <bits/stdc++.h>
 
 #define PB push_back
@@ -48,7 +44,7 @@ int main() {
         }else { //out
             if(alturas.size() > 0)
                 ans += (*(--alturas.end()) * (ev.x - last_event.x));
-            alturas.erase(ev.y);
+            alturas.erase(alturas.find(ev.y));
         }
         last_event = ev;
     }

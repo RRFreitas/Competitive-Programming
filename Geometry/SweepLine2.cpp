@@ -1,23 +1,3 @@
-/*
- * Author: Rennan Rocha
-*/
-
-#include <bits/stdc++.h>
-
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
-#define debug(i) cout << i << endl;
-#define debugarr(a) for(auto i : a) cout << i << " ";
-
-#define ll long long
-#define vi vector<int>
-#define vll vector<ll>
-#define pi pair<int,int>
-#define pll pair<ll, ll>
-#define vpi vector<pi>
-
 #define LEFT(x) (x<<1)
 #define RIGHT(x) (x<<1|1)
 #define MAXN 1000010

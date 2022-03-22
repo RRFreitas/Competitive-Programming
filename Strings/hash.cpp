@@ -1,10 +1,6 @@
 /*
  *  Hash 0-indexed
  */
-#include <bits/stdc++.h>
-
-using namespace std;
-
 const int NMAX = 100007; // max string size
 const int HMAX = 2; // number of hashes
 

@@ -1,14 +1,3 @@
-#include <bits/stdc++.h>
-
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
-#define ll long long
-#define pi pair<int,int>
-
-using namespace std;
-
 vector<int> SA(string &s){
     int n = s.size(), alf = max(256, n+2);
     vector<int> ans, rnk(n), temp_rnk(n), aux[alf];

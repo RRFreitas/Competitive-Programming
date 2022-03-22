@@ -1,7 +1,3 @@
-#include "bits/stdc++.h"
-
-using namespace std;
-
 const int MAX_N = 100000001; // more than N
 
 vector<int> prime;

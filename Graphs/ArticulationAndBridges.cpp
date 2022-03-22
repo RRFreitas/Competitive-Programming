@@ -1,25 +1,5 @@
-#include <bits/stdc++.h>
-
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
-#define REP(i,a,b) for (int i = a; i <= b; i++)
-#define debug(i) cout << i << endl;
-#define debugarr(a) for(auto i : a) cout << i << " ";
-
-#define lli long long
-#define vi vector<int>
-#define vli vector<li>
-#define vlli vector<lli>
-#define pi pair<int,int>
-#define pli pair<li, li>
-#define vpi vector<pi>
-
 #define N 1000
 #define UNVISITED -1
-
-using namespace std;
 
 vi dfs_num(N, UNVISITED);
 vi dfs_low(N, 0);

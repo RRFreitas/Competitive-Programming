@@ -1,9 +1,4 @@
-#include <bits/stdc++.h>
-
-#define ll long long
 #define MOD 1000000007
-
-using namespace std;
 
 ll mul(ll a, ll b) {
     return ((a%MOD)*(b%MOD))%MOD;
@@ -82,6 +77,3 @@ struct Matrix {
 
     ~Matrix() {clean();}
 };
-
-int main() {
-}

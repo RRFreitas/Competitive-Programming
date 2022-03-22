@@ -1,21 +1,3 @@
-#include <bits/stdc++.h>
- 
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
-#define REP(i,a,b) for (int i = a; i <= b; i++)
- 
-#define ll long long
-#define vi vector<int>
-#define vll vector<ll>
-#define pi pair<int,int>
-#define vpi vector<pi>
- 
-#define MAXN 5000000000000
- 
-using namespace std;
- 
 struct node {
     ll val;
     node *esq, *dir;
@@ -60,9 +42,4 @@ ll query(node &no, ll l, ll r, ll x, ll y) {
             resp += query(*no.dir, mid+1, r, x, y);
         return resp;
     }
-}
- 
-int main() {
-    ios_base::sync_with_stdio(false);
-    node tree;
 }
