@@ -26,9 +26,10 @@ struct KMP {
         pf[0] = 0;
 
         for(int i = 1; i < s.size(); i++) {
-            int k = i-1;
-            while(k > 0 && s[i] != s[pf[k]]) k = pf[k-1];
-            pf[i] = (s[i] == s[pf[k]] ? pf[k]+1 : 0);
+            int k = pf[i-1];
+            while(k > 0 && s[i] != s[k]) k = pf[k-1];
+            if(s[i] == s[k]) k++;
+            pf[i] = k;
         }
         is_built = true;
     }
@@ -46,9 +47,10 @@ struct KMP {
                 if(j == s[i]-start) {
                     automaton[i][j] = i+1;
                 } else {
-                    int k = i-1;
-                    while(k > 0 && start+j != s[pf[k]]) k = pf[k-1];
-                    automaton[i][j] = (start+j == s[pf[k]] ? pf[k]+1 : 0);
+                    int k = pf[i-1];
+                    while(k > 0 && start+j != s[k]) k = pf[k-1];
+                    if(start+j == s[k]) k++;
+                    automaton[i][j] = k;
                 }
             }
         }
@@ -58,9 +60,10 @@ struct KMP {
         if(s.empty()) {
             pf.push_back(0);
         } else {
-            int k = int(s.size()) - 1;
-            while(k > 0 && v != s[pf[k]]) k = pf[k-1];
-            pf.push_back((v == s[pf[k]] ? pf[k]+1 : 0));
+            int k = pf[int(s.size()) - 1];
+            while(k > 0 && v != s[k]) k = pf[k-1];
+            if(s[k] == v) k++;
+            pf.push_back(k);
         }
         s.push_back(v);
     }
