@@ -1,12 +1,3 @@
-#include <bits/stdc++.h>
-
-#define PB push_back
-#define MP make_pair
-
-#define ll long long
-
-using namespace std;
-
 struct event {
     int x, y, flag;
 

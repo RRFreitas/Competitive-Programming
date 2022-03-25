@@ -1,4 +1,3 @@
- 
 template<typename T, bool maximum_mode = false>
 struct RMQ {
     static int highest_bit(unsigned x) {
