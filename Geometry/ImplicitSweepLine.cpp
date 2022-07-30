@@ -1,24 +1,3 @@
-#include <bits/stdc++.h>
-
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
-
-#define ll long long
-#define vi vector<int>
-#define vll vector<ll>
-#define pi pair<int,int>
-#define pll pair<ll, ll>
-#define vpi vector<pi>
-#define vpll vector<pll>
-
-#define INF 1e18
-#define MOD 1000000007
-//#define DEBUG
-
-using namespace std;
-
 struct node {
     pair<ll,ll> val;
     ll lazy;
