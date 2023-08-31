@@ -1,27 +1,17 @@
 #define LEFT(x) (x<<1)
 #define RIGHT(x) (x<<1|1)
-
 struct Node {
     // attributes
-
-
     Node() {
         // neutral constructor
-
     }
-
     Node() {
         // init
-
     }
-
     Node(Node l, Node r) {
         // merge
-
     }
 };
-
-
 template<class node, class T>
 struct SegTree {
     int size;
