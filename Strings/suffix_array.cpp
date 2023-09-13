@@ -3,6 +3,8 @@ struct suffix_array {
     int n;
     rmq<int> RMQ;
     vector<int> p, rnk, lcp;
+    vector<vector<int>> c;
+
     const int ALP = 256;
 
     suffix_array(const string &s_) : s(s_) {
@@ -38,6 +40,7 @@ struct suffix_array {
                 if(cur != prv) cl++;
                 cn[p[i]] = cl - 1;
             }
+            c.push_back(rnk);
             cn.swap(rnk);
         }
 
@@ -55,4 +58,11 @@ struct suffix_array {
         if (l == r) return n - l;
         return RMQ.query(min(l, r) + 1, max(l, r));
     }
+
+    int compare(int i, int j, int l, int k) { // l = size, k = log(l)
+        pair<int, int> a = {c[k][i], c[k][(i+l-(1 << k))%n]};
+        pair<int, int> b = {c[k][j], c[k][(j+l-(1 << k))%n]};
+        return a == b ? 0 : a < b ? -1 : 1;
+    }
+
 };
